@@ -49,7 +49,7 @@
         "valid-typeof": "warn",
         "semi": ["error", "never"],
         "no-console": ["error", { "allow": ["warn", "error"] }],
-        "react/prop-types": ["warn", { "ignore": ["layout"] }]
+        "react/prop-types": ["off", { "ignore": ["layout"] }]
     },
     "plugins": [
         "react"

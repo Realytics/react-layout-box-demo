@@ -6,6 +6,7 @@ import mapValues from 'lodash/mapValues'
 import isFunction from 'lodash/isFunction'
 import filter from 'lodash/filter'
 import reduce from 'lodash/reduce'
+import omit from 'lodash/omit'
 import { layoutContextValidationMap, LayoutStore, LayoutInvalidReason } from './LayoutStore'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -90,8 +91,25 @@ export default class LayoutBox extends React.Component {
       return childMapped
     })
 
+    const divProps = omit(this.props, [
+      'width',
+      'height',
+      'left',
+      'top',
+      'right',
+      'bottom',
+      'transitionDuration',
+      'artificialScroll',
+      'verticalScroll',
+      'horizontalScroll',
+      'className',
+      'style',
+      'ignoreResize',
+      'children'
+    ])
+
     return (
-      <BoxWrapper style={style}>
+      <BoxWrapper {...divProps} style={style}>
         {this.props.artificialScroll ?
           (
             <ArtificialScrollWrapper style={artificialScrollBoxStyle}>

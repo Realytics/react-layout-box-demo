@@ -44,7 +44,7 @@ export default class LayoutContainer extends React.Component {
     }
   
     return (
-      <ContainerWrapper size={size}>
+      <ContainerWrapper size={size} style={this.props.style}>
         { isFunction(this.props.children) ? this.props.children(this.layoutStore.getState()) : this.props.children }
       </ContainerWrapper>
     )

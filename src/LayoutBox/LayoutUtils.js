@@ -12,7 +12,7 @@ export function percent(percentage, fallback = 100) {
 }
 
 export function display(layout) {
-  const width = layout.width.valid ? layout.width.value : 'INVALID'
-  const height = layout.height.valid ? layout.height.value : 'INVALID'
+  const width = layout.width.valid ? Math.round(layout.width.value) : 'INVALID'
+  const height = layout.height.valid ? Math.round(layout.height.value) : 'INVALID'
   return `${width} x ${height}`
 }
