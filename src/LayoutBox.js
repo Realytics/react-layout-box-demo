@@ -243,7 +243,7 @@ LayoutBox.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   ignoreResize: PropTypes.bool,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.func]),
+  children: PropTypes.node,
 }
 
 // Get parent layout and subscribe

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import LayoutContainer from './LayoutContainer'
 import LayoutBox from './LayoutBox'
+import throttle from 'lodash/throttle'
 
 class App extends Component {
 
@@ -10,7 +11,7 @@ class App extends Component {
       width: window.innerWidth,
       height: window.innerHeight
     }
-    this.onResize = this.onResize.bind(this);
+    this.onResize = throttle(this.onResize.bind(this), 50)
   }
 
   componentDidMount() {
@@ -26,9 +27,12 @@ class App extends Component {
       <LayoutContainer width={this.state.width} height={this.state.height}>
         <LayoutBox
           bottom={(layout) => (layout.height.valid ? layout.height.value * 0.5 : 200)}
-          style={{ background: '#EF5350' }}
+          style={{ background: '#EF5350', color: 'white', textAlign: 'left' }}
         >
-          <LayoutBox left={200} style={{ background: '#5C6BC0' }}></LayoutBox>
+          {(layout) => (layout.width.value + ' x ' + layout.height.value)}  
+          <LayoutBox left={200} style={{ background: '#5C6BC0', opacity: 0.5 }}>
+            {(layout) => (layout.width.value + ' x ' + layout.height.value)}
+          </LayoutBox>
         </LayoutBox>
       </LayoutContainer>
     )
