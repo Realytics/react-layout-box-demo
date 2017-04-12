@@ -26,9 +26,9 @@ class App extends Component {
       <LayoutContainer width={this.state.width} height={this.state.height}>
         <LayoutBox
           bottom={(layout) => (layout.height.valid ? layout.height.value * 0.5 : 200)}
-          style={{ background: 'red' }}
+          style={{ background: '#EF5350' }}
         >
-          salut
+          <LayoutBox left={200} style={{ background: '#5C6BC0' }}></LayoutBox>
         </LayoutBox>
       </LayoutContainer>
     )

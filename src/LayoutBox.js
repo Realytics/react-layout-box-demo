@@ -1,5 +1,11 @@
 import React from 'react'
-import _ from 'lodash'
+import forEach from 'lodash/forEach'
+import isNumber from 'lodash/isNumber'
+import isArray from 'lodash/isArray'
+import mapValues from 'lodash/mapValues'
+import isFunction from 'lodash/isFunction'
+import filter from 'lodash/filter'
+import reduce from 'lodash/reduce'
 import { layoutContextValidationMap, LayoutStore, LayoutInvalidReason } from './LayoutStore'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -58,7 +64,7 @@ export default class LayoutBox extends React.Component {
       overflowY: (this.props.verticalScroll) ? 'auto' : 'hidden',
       overflowX: (this.props.horizontalScroll) ? 'auto' : 'hidden'
     }
-    _.forEach(layout, (val, key) => {
+    forEach(layout, (val, key) => {
       if (val.valid) {
         layoutStyle[key] = val.value + 'px'
       }
@@ -67,18 +73,18 @@ export default class LayoutBox extends React.Component {
 
     let artificialScrollBoxStyle = {}    
     if (this.props.artificialScroll) {
-      let artificialScrollHeight = _.isNumber(this.props.verticalScroll) ? this.props.verticalScroll : layout.height.value 
-      let artificialScrollWidth = _.isNumber(this.props.horizontalScroll) ? this.props.horizontalScroll : layout.width.value
+      let artificialScrollHeight = isNumber(this.props.verticalScroll) ? this.props.verticalScroll : layout.height.value 
+      let artificialScrollWidth = isNumber(this.props.horizontalScroll) ? this.props.horizontalScroll : layout.width.value
       artificialScrollBoxStyle = {
         width: artificialScrollWidth,
         height: artificialScrollHeight
       }
     }
 
-    const children = _.isArray(this.props.children) ? this.props.children : [this.props.children]
+    const children = isArray(this.props.children) ? this.props.children : [this.props.children]
 
     const childrenMapped = children.map(child => {
-      const childMapped = _.isFunction(child) ?
+      const childMapped = isFunction(child) ?
         child(this.layoutStore.getState()) :
         child
       return childMapped
@@ -150,14 +156,14 @@ export default class LayoutBox extends React.Component {
   ) {
     const inputs = { before, size, after }
     // If props is a function, call it with parentLayout
-    let props = _.mapValues(inputs, (val) => {
+    let props = mapValues(inputs, (val) => {
       let value
-      if (_.isFunction(val)) {
+      if (isFunction(val)) {
         value = val(parentLayout)
       } else {
         value = val
       }
-      const valid = _.isNumber(value)
+      const valid = isNumber(value)
       return {
         valid: valid,
         value: value,
@@ -186,8 +192,8 @@ export default class LayoutBox extends React.Component {
       props.after.value = null
     }
     // Update valids
-    props = _.mapValues(props, (val) => {
-      let valid = _.isNumber(val.value)
+    props = mapValues(props, (val) => {
+      let valid = isNumber(val.value)
       return {
         value: val.value,
         valid: valid,
@@ -195,10 +201,10 @@ export default class LayoutBox extends React.Component {
       }
     })
     // At this point, only one value should be invalid
-    if (_.filter(props, val => (!val.valid)).length !== 1) {
+    if (filter(props, val => (!val.valid)).length !== 1) {
       console.warn(`Layout algo bug, there should be only on invalid value at this point !`)
     }
-    return _.mapValues(props, (val, key) => {
+    return mapValues(props, (val, key) => {
       if (val.valid) {
         return val
       }
@@ -210,7 +216,7 @@ export default class LayoutBox extends React.Component {
         }
       }
       // Compute total of other
-      const othersTotal = _.reduce(props, (acc, rVal, rKey) => (acc + (rKey === key ? 0 : rVal.value)), 0)
+      const othersTotal = reduce(props, (acc, rVal, rKey) => (acc + (rKey === key ? 0 : rVal.value)), 0)
       return {
         valid: true,
         value: parentSize.value - othersTotal,

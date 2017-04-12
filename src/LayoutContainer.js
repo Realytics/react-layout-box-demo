@@ -1,5 +1,5 @@
 import React from 'react'
-import _ from 'lodash'
+import isFunction from 'lodash/isFunction'
 import { layoutContextValidationMap, LayoutStore, LayoutInvalidReason } from './LayoutStore'
 import styled from 'styled-components'
 import PropTypes from 'prop-types'
@@ -45,7 +45,7 @@ export default class LayoutContainer extends React.Component {
   
     return (
       <ContainerWrapper size={size}>
-        { _.isFunction(this.props.children) ? this.props.children(this.layoutStore.getState()) : this.props.children }
+        { isFunction(this.props.children) ? this.props.children(this.layoutStore.getState()) : this.props.children }
       </ContainerWrapper>
     )
   }
