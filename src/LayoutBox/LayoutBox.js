@@ -132,9 +132,9 @@ export default class LayoutBox extends React.Component {
 
   getLayout(parentLayout, props) {
     const parentLayoutHeight = parentLayout.scrollHeight.valid ? parentLayout.scrollHeight : parentLayout.height
-    const vertical = this.computeDirection(parentLayout, parentLayoutHeight, props.top, props.height, props.bottom)
+    const vertical = this.computeDirection(parentLayout, parentLayoutHeight, props.top, props.height, props.bottom, 'vertical')
     const parentLayoutWidth = parentLayout.scrollWidth.valid ? parentLayout.scrollWidth : parentLayout.width
-    const horizontal = this.computeDirection(parentLayout, parentLayoutWidth, props.left, props.width, props.right)
+    const horizontal = this.computeDirection(parentLayout, parentLayoutWidth, props.left, props.width, props.right, 'horizontal')
     return {
       top: vertical.before,
       height: vertical.size,
@@ -152,14 +152,15 @@ export default class LayoutBox extends React.Component {
     parentSize,
     before,
     size,
-    after
+    after,
+    direction
   ) {
     const inputs = { before, size, after }
     // If props is a function, call it with parentLayout
     let props = mapValues(inputs, (val) => {
       let value
       if (isFunction(val)) {
-        value = val(parentLayout)
+        value = val(parentLayout, direction)
       } else {
         value = val
       }
@@ -243,7 +244,7 @@ LayoutBox.propTypes = {
   className: PropTypes.string,
   style: PropTypes.object,
   ignoreResize: PropTypes.bool,
-  children: PropTypes.node,
+  children: PropTypes.any,
 }
 
 // Get parent layout and subscribe

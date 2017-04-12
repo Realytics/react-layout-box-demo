@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
-import LayoutContainer from './LayoutContainer'
-import LayoutBox from './LayoutBox'
+import { LayoutContainer, LayoutBox, InjectLayout, LayoutUtils } from './LayoutBox'
 import throttle from 'lodash/throttle'
+
+const StupidComponent = (props) => (
+  <p>{(props.layout.width.value + ' x ' + props.layout.height.value)}</p>
+)
+
+const StupidComponentWithLayout = InjectLayout(StupidComponent)
 
 class App extends Component {
 
@@ -26,13 +31,16 @@ class App extends Component {
     return (
       <LayoutContainer width={this.state.width} height={this.state.height}>
         <LayoutBox
-          bottom={(layout) => (layout.height.valid ? layout.height.value * 0.5 : 200)}
+          bottom={LayoutUtils.percent(50)}
           style={{ background: '#EF5350', color: 'white', textAlign: 'left' }}
         >
-          {(layout) => (layout.width.value + ' x ' + layout.height.value)}  
+          {LayoutUtils.display}  
           <LayoutBox left={200} style={{ background: '#5C6BC0', opacity: 0.5 }}>
-            {(layout) => (layout.width.value + ' x ' + layout.height.value)}
+            {LayoutUtils.display}
           </LayoutBox>
+        </LayoutBox>
+        <LayoutBox top={LayoutUtils.percent(60)}>
+          <StupidComponentWithLayout />
         </LayoutBox>
       </LayoutContainer>
     )

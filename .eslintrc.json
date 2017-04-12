@@ -48,7 +48,8 @@
         "constructor-super": "warn",
         "valid-typeof": "warn",
         "semi": ["error", "never"],
-        "no-console": ["error", { "allow": ["warn", "error"] }]
+        "no-console": ["error", { "allow": ["warn", "error"] }],
+        "react/prop-types": ["warn", { "ignore": ["layout"] }]
     },
     "plugins": [
         "react"

@@ -68,7 +68,7 @@ export default class LayoutContainer extends React.Component {
 LayoutContainer.propTypes = {
   width: PropTypes.number.isRequired,
   height: PropTypes.number.isRequired,
-  children: PropTypes.element.isRequired
+  children: PropTypes.node
 }
 
 LayoutContainer.childContextTypes = layoutContextValidationMap
