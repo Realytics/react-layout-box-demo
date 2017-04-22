@@ -8,10 +8,10 @@ const StupidComponentWithLayout = InjectLayout(StupidComponent)
 
 const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
-    <LayoutBox height={70} style={{ background: 'DodgerBlue' }}>TopBar</LayoutBox>
+    <LayoutBox height={70} style={{ background: 'RosyBrown' }}>TopBar</LayoutBox>
     <LayoutBox top={70}>
-      <LayoutBox width={200} style={{ background: 'OrangeRed' }}>Left Menu</LayoutBox>
-      <LayoutBox left={200} style={{ background: 'BlueViolet' }}>
+      <LayoutBox width={200} style={{ background: 'BurlyWood' }}>Left Menu</LayoutBox>
+      <LayoutBox left={200} style={{ background: 'MistyRose' }}>
         <StupidComponentWithLayout />
       </LayoutBox>
     </LayoutBox>
