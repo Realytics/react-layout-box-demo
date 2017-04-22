@@ -1,7 +1,7 @@
 import React from 'react'
 import { LayoutContainer, LayoutBox} from './LayoutBox'
 
-const boxStyle = (lighness) => ({ background: `hsl(100, 41%, ${lighness}%)`, padding: 10, fontSize: '2em' })
+const boxStyle = (lighness) => ({ background: `hsl(100, 41%, ${lighness}%)`, padding: 10, fontSize: '2rem' })
 
 const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
