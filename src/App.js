@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { LayoutContainer, LayoutBox } from './LayoutBox'
+import { LayoutContainer, LayoutBox, LayoutUtils } from './LayoutBox'
 import throttle from 'lodash/throttle'
 
 /**
@@ -35,7 +35,7 @@ class Content extends Component {
   render() {
     this.renderCount++
     return (
-      <LayoutBox height={200} style={{ background: 'RosyBrown' }} onClick={() => this.setState((state) => ({ clickCount: state.clickCount + 1 }))}>
+      <LayoutBox height={200} style={{ background: 'SteelBlue' }} onClick={() => this.setState((state) => ({ clickCount: state.clickCount + 1 }))}>
         Content Click count : {this.state.clickCount} <br />
         Content Render count : {this.renderCount} <br />
         Locale Render count : <RenderCounter />
@@ -70,11 +70,11 @@ class App extends Component {
   render() {
     this.renderCount++
     return (
-      <LayoutContainer width={this.state.width} height={this.state.height} style={{ background: 'MistyRose' }}>
-        <LayoutBox height={50}>
+      <LayoutContainer width={this.state.width} height={this.state.height} style={{ background: 'Indigo' }}> 
+        <LayoutBox height={LayoutUtils.percent(20)} style={{ background: 'DodgerBlue' }}>
           App Render count : {this.renderCount} <br />
         </LayoutBox>
-        <LayoutBox top={50}>
+        <LayoutBox top={LayoutUtils.percent(20)}>
           <Content />
         </LayoutBox>
       </LayoutContainer>
