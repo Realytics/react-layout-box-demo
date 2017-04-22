@@ -3,16 +3,11 @@ import ReactDOM from 'react-dom'
 import { injectGlobal } from 'styled-components'
 
 /* eslint-disable no-unused-vars */
-import Basic from './01_Basic'
-import OneRender from './02_OneRender'
-import DisplaySize from './03_DisplaySize'
-import Percent from './04_Percent'
-import Inject from './05_Inject'
-import Advanced from './06_Advanced'
+import App from './App'
 /* eslint-enable */
 
 ReactDOM.render(
-  <Basic />,
+  <App />,
   document.getElementById('root')
 )
 
@@ -24,8 +19,9 @@ injectGlobal`
     font-family: sans-serif;
     color: white;
   
-    #root > h1 {
-      color: hsl(335, 46%, 34%);
-    }
+  }
+
+  h1 {
+    color: hsl(335, 46%, 34%);
   }
 `

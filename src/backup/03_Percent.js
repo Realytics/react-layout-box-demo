@@ -1,7 +1,7 @@
 import React from 'react'
 import { LayoutContainer, LayoutBox, LayoutUtils } from './LayoutBox'
 
-const Percent = () => (
+const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
     <LayoutBox height={70} style={{ background: 'DodgerBlue' }}>TopBar</LayoutBox>
     <LayoutBox top={70}>
@@ -10,4 +10,4 @@ const Percent = () => (
   </LayoutContainer>
 )
 
-export default Percent
+export default App

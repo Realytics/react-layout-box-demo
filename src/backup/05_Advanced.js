@@ -47,7 +47,7 @@ class Content extends Component {
 /**
  * Advanced
  */
-class Advanced extends Component {
+class App extends Component {
 
   constructor() {
     super()
@@ -89,4 +89,4 @@ class Advanced extends Component {
   }
 }
 
-export default Advanced
+export default App

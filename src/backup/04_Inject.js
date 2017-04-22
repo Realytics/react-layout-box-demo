@@ -6,7 +6,7 @@ const StupidComponent = (props) => (
 )
 const StupidComponentWithLayout = InjectLayout(StupidComponent)
 
-const Inject = () => (
+const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
     <LayoutBox height={70} style={{ background: 'DodgerBlue' }}>TopBar</LayoutBox>
     <LayoutBox top={70}>
@@ -18,4 +18,4 @@ const Inject = () => (
   </LayoutContainer>
 )
 
-export default Inject
+export default App

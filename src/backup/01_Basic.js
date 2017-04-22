@@ -1,7 +1,7 @@
 import React from 'react'
 import { LayoutContainer, LayoutBox } from './LayoutBox'
 
-const Basic = () => (
+const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
     <LayoutBox height={70} style={{ background: 'DodgerBlue' }}>TopBar</LayoutBox>
     <LayoutBox top={70}>
@@ -11,4 +11,4 @@ const Basic = () => (
   </LayoutContainer>
 )
 
-export default Basic
+export default App
