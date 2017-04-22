@@ -17,11 +17,6 @@ injectGlobal`
     margin: 0;
     padding: 0;
     font-family: sans-serif;
-    color: white;
-  
-  }
-
-  h1 {
-    color: hsl(335, 46%, 34%);
+    color: MediumSlateBlue;
   }
 `
