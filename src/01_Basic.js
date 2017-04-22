@@ -1,7 +1,6 @@
 import React from 'react'
-
 const Basic = () => (
-  <p>Hello React !</p>
+  <h1>Hello Meetup React !</h1>
 )
 
 export default Basic

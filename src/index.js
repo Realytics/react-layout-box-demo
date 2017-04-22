@@ -1,6 +1,6 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import './index.css'
+import { injectGlobal } from 'styled-components'
 
 /* eslint-disable no-unused-vars */
 import Basic from './01_Basic'
@@ -15,3 +15,17 @@ ReactDOM.render(
   <Basic />,
   document.getElementById('root')
 )
+
+// eslint-disable-next-line no-unused-expressions
+injectGlobal`
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    color: white;
+  
+    #root > h1 {
+      color: hsl(335, 46%, 34%);
+    }
+  }
+`
