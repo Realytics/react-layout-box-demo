@@ -1,16 +1,21 @@
 import React from 'react'
 import { LayoutContainer, LayoutBox} from './LayoutBox'
 
+const boxStyle = (lighness) => ({ background: `hsl(100, 41%, ${lighness}%)`, padding: 10, fontSize: '2em' })
+
 const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
-    <LayoutBox height={70} style={{ background: 'RosyBrown' }}>TopBar</LayoutBox>
+    <LayoutBox height={70} style={boxStyle(50)}>TopBar</LayoutBox>
     <LayoutBox top={70}>
-      <LayoutBox width={200} style={{ background: 'BurlyWood' }}>Left Menu</LayoutBox>
-      <LayoutBox left={200} style={{ background: 'MistyRose' }}>
+      <LayoutBox width={200} style={boxStyle(60)}>LeftMenu</LayoutBox>
+      <LayoutBox left={200} style={boxStyle(70)} verticalScroll>
         {(layout) => (
-          <pre>
-            {JSON.stringify(layout, null, 2)}
-          </pre>
+          <div>
+            Content  
+            <pre>  
+              {JSON.stringify(layout, null, 2)}
+            </pre>
+          </div>
         )}
       </LayoutBox>
     </LayoutBox>
