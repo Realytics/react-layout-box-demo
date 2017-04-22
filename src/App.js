@@ -3,9 +3,9 @@ import { LayoutContainer, LayoutBox, LayoutUtils } from './LayoutBox'
 
 const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
-    <LayoutBox height={70} style={{ background: 'DodgerBlue' }}>TopBar</LayoutBox>
+    <LayoutBox height={70} style={{ background: 'RosyBrown' }}>TopBar</LayoutBox>
     <LayoutBox top={70}>
-      <LayoutBox width={LayoutUtils.percent(50)} style={{ background: 'OrangeRed' }}>Left Menu</LayoutBox>
+      <LayoutBox width={LayoutUtils.percent(50)} style={{ background: 'MistyRose' }}>Left Menu</LayoutBox>
     </LayoutBox>
   </LayoutContainer>
 )
