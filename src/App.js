@@ -5,9 +5,9 @@ const boxStyle = (lighness) => ({ background: `hsl(100, 41%, ${lighness}%)`, pad
 
 const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
-    <LayoutBox height={70} style={boxStyle(50)}>TopBar</LayoutBox>
+    <LayoutBox height={70} style={boxStyle(50)}>Top Bar</LayoutBox>
     <LayoutBox top={70}>
-      <LayoutBox width={200} style={boxStyle(60)}>LeftMenu</LayoutBox>
+      <LayoutBox width={200} style={boxStyle(60)}>Left Menu</LayoutBox>
       <LayoutBox left={200} style={boxStyle(70)} verticalScroll>
         {(layout) => (
           <div>
