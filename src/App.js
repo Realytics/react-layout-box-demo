@@ -12,17 +12,6 @@ const functionAsChildren = (layout) => (
   </div>
 )
 
-const boxStyle = (lighness) => ({ background: `hsl(100, 41%, ${lighness}%)`, padding: 10, fontSize: '2rem' })
-
-const functionAsChildren = (layout) => (
-  <div>
-    Content
-    <pre>
-      {JSON.stringify(layout, null, 2)}
-    </pre>
-  </div>
-)
-
 const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
     <LayoutBox height={70} style={boxStyle(50)}>Top Bar</LayoutBox>
