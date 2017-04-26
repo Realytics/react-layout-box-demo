@@ -13,7 +13,7 @@ Button.contextTypes = {
 
 const Message = (props) => (
   <div>
-    {props.text} <Button>Delete</Button>
+    {props.text} <Button>Amazing !</Button>
   </div>
 )
 
