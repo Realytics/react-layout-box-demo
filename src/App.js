@@ -8,7 +8,7 @@ const Button = (props) => (
 
 const Message = (props) => (
   <div>
-    {props.text} <Button color={props.color}>Delete</Button>
+    {props.text} <Button color={props.color}>Amazing !</Button>
   </div>
 )
 
