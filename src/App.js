@@ -13,6 +13,10 @@ Button.contextTypes = {
 
 class Message extends React.Component {
 
+  shouldComponentUpdate() {
+    return false
+  }
+
   render() {
     return (
       <div>
