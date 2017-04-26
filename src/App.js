@@ -1,49 +1,67 @@
-import React, { Component } from 'react'
+import React, { Component, PureComponent } from 'react'
 import { LayoutContainer, LayoutBox, LayoutUtils } from './LayoutBox'
 import throttle from 'lodash/throttle'
 
 const boxStyle = (lighness) => ({ background: `hsl(0, 41%, ${lighness}%)`, padding: 10, fontSize: '2rem' })
 
 /**
- * RenderCounter
+ * Content
  */
-class RenderCounter extends Component {
+class ContentPure extends PureComponent {
+
   constructor() {
     super()
     this.renderCount = 0
   }
+
   render() {
     this.renderCount++
     return (
-      <span>{this.renderCount}</span>
+      <LayoutBox style={boxStyle(60)} top={20} left={20} right={20} bottom={20}>
+        {() => {
+          // eslint-disable-next-line no-console
+          console.log('Render Pure Component Content')
+          return (
+            <div>
+              <b>Pure Component </b> <br />
+              Render count : {this.renderCount} <br />
+            </div>
+          )
+        }}
+      </LayoutBox>
     )
   }
+
 }
 
 /**
  * Content
  */
 class Content extends Component {
+
   constructor() {
     super()
     this.renderCount = 0
-    this.state = {
-      clickCount: 0
-    }
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.state.clickCount !== nextState.clickCount
-  }
+
   render() {
     this.renderCount++
     return (
-      <LayoutBox height={200} style={boxStyle(60)} onClick={() => this.setState((state) => ({ clickCount: state.clickCount + 1 }))}>
-        Content Click count : {this.state.clickCount} <br />
-        Content Render count : {this.renderCount} <br />
-        Locale Render count : <RenderCounter />
+      <LayoutBox style={boxStyle(60)} top={20} left={20} right={20} bottom={20}>
+        {() => {
+          // eslint-disable-next-line no-console
+          console.log('Render Normal Component Content')
+          return (
+            <div>
+              <b>Normal Component</b> <br />
+              Render count : {this.renderCount} <br />
+            </div>
+          )
+        }}
       </LayoutBox>
     )
   }
+
 }
 
 /**
@@ -72,12 +90,12 @@ class App extends Component {
   render() {
     this.renderCount++
     return (
-      <LayoutContainer width={this.state.width} height={this.state.height} style={boxStyle(70)}> 
-        <LayoutBox height={LayoutUtils.percent(20)} style={boxStyle(50)}>
-          App Render count : {this.renderCount} <br />
-        </LayoutBox>
-        <LayoutBox top={LayoutUtils.percent(20)}>
+      <LayoutContainer width={this.state.width} height={this.state.height} style={boxStyle(70)}>
+        <LayoutBox bottom={LayoutUtils.percent(50)}>
           <Content />
+        </LayoutBox>
+        <LayoutBox top={LayoutUtils.percent(50)}>
+          <ContentPure />
         </LayoutBox>
       </LayoutContainer>
     )
