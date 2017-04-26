@@ -1,30 +1,43 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-const Button = (props) => (
-  <button style={{background: props.color}}>
+const Button = (props, context) => (
+  <button style={{background: context.color}}>
     {props.children}
   </button>
 )
 
+Button.contextTypes = {
+  color: PropTypes.string
+}
+
 const Message = (props) => (
   <div>
-    {props.text} <Button color={props.color}>Delete</Button>
+    {props.text} <Button>Delete</Button>
   </div>
 )
 
 class MessageList extends React.Component {
+
+  getChildContext() {
+    return { color: "PapayaWhip" };
+  }
+
   render() {
-    const color = "PapayaWhip"
     return (
       <div>
         {React.Children.toArray(
           this.props.messages.map((message) =>
-            <Message text={message.text} color={color} />
+            <Message text={message.text} />
           )
         )}
       </div>
     )
   }
+}
+
+MessageList.childContextTypes = {
+  color: PropTypes.string
 }
 
 const messages = [
