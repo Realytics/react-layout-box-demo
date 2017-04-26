@@ -7,7 +7,7 @@ const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
     <LayoutBox height={70} style={boxStyle(60)}>Top Bar</LayoutBox>
     <LayoutBox top={70}>
-      <LayoutBox width={LayoutUtils.percent(30)} style={boxStyle(70)}>Left Menu</LayoutBox>
+      <LayoutBox width={(layout) => (layout.width.valid ? layout.width.value : 100)} style={boxStyle(70)}>Left Menu</LayoutBox>
       <LayoutBox left={LayoutUtils.percent(30)} style={boxStyle(50)}>Content</LayoutBox>
     </LayoutBox>
   </LayoutContainer>
