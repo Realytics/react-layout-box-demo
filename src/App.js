@@ -41,9 +41,9 @@ MessageList.childContextTypes = {
 }
 
 const messages = [
-  { text: 'React' },
-  { text: 'Redux' },
-  { text: 'Typescript' },
+  { text: 'React is ' },
+  { text: 'Typescript is ' },
+  { text: 'VS Code is ' }
 ]
 
 const App = () => (
