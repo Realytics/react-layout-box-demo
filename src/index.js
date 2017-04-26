@@ -2,9 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { injectGlobal } from 'styled-components'
 
-/* eslint-disable no-unused-vars */
 import App from './App'
-/* eslint-enable */
 
 ReactDOM.render(
   <App />,
