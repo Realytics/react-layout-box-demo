@@ -11,21 +11,36 @@ Button.contextTypes = {
   color: PropTypes.string
 }
 
-const Message = (props) => (
-  <div>
-    {props.text} <Button>Amazing !</Button>
-  </div>
-)
-
-class MessageList extends React.Component {
-
-  getChildContext() {
-    return { color: "PapayaWhip" }
-  }
+class Message extends React.Component {
 
   render() {
     return (
       <div>
+        {this.props.text} <Button>Amazing !</Button>
+      </div>
+    )
+  }
+
+}
+
+class MessageList extends React.Component {
+
+  constructor() {
+    super()
+    this.state = { color: "PapayaWhip" }
+  }
+
+  getChildContext() {
+    return { color: this.state.color }
+  }
+
+  render() {
+    return (
+      <div
+        onClick={() => this.setState(state => (
+          { color: (state.color === "PapayaWhip" ? "Navy" : "PapayaWhip") }
+        ))}
+      >
         {React.Children.toArray(
           this.props.messages.map((message) =>
             <Message text={message.text} />
