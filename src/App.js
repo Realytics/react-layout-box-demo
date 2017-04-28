@@ -12,8 +12,8 @@ const App = () => (
   <LayoutContainer width={window.innerWidth} height={window.innerHeight}>
     <LayoutBox height={70} style={boxStyle(70)}>TopBar</LayoutBox>
     <LayoutBox top={70}>
-      <LayoutBox width={200} style={boxStyle(60)}>Left Menu</LayoutBox>
-      <LayoutBox left={200} style={boxStyle(50)}>
+      <LayoutBox width={250} style={boxStyle(60)}>Left Menu</LayoutBox>
+      <LayoutBox left={250} style={boxStyle(50)}>
         <StupidComponentWithLayout />
       </LayoutBox>
     </LayoutBox>
