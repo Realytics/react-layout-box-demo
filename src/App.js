@@ -1,14 +1,50 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Button = (props, context) => (
-  <button style={{background: context.color}}>
-    {props.children}
-  </button>
-)
+class ColorStore {
+
+  constructor(initialColor) {
+    this.color = initialColor
+    this.listeners = []
+  }
+
+  addListener(callback) {
+    this.listeners.push(callback)
+  }
+
+  setValue(newColor) {
+    this.color = newColor
+    this.listeners.forEach(listener => listener(this.color))
+  }
+
+  getValue() {
+    return this.color
+  }
+
+}
+
+
+class Button extends React.Component {
+
+  constructor(props, context) {
+    super(props, context)
+    context.colorStore.addListener(() => {
+      this.forceUpdate()
+    })
+  }
+
+  render() {
+    return (
+      <button style={{background: this.context.colorStore.getValue()}}>
+        {this.props.children}
+      </button>
+    )
+  }
+
+}
 
 Button.contextTypes = {
-  color: PropTypes.string
+  colorStore: PropTypes.instanceOf(ColorStore)
 }
 
 class Message extends React.Component {
@@ -31,19 +67,17 @@ class MessageList extends React.Component {
 
   constructor() {
     super()
-    this.state = { color: "PapayaWhip" }
+    this.colorStore = new ColorStore('PapayaWhip')
   }
 
   getChildContext() {
-    return { color: this.state.color }
+    return { colorStore: this.colorStore }
   }
 
   render() {
     return (
       <div
-        onClick={() => this.setState(state => (
-          { color: (state.color === "PapayaWhip" ? "Navy" : "PapayaWhip") }
-        ))}
+        onClick={() => { this.colorStore.setValue(this.colorStore.getValue() === "PapayaWhip" ? "Navy" : "PapayaWhip") }}
       >
         {React.Children.toArray(
           this.props.messages.map((message) =>
@@ -56,7 +90,7 @@ class MessageList extends React.Component {
 }
 
 MessageList.childContextTypes = {
-  color: PropTypes.string
+  colorStore: PropTypes.instanceOf(ColorStore)
 }
 
 const messages = [
