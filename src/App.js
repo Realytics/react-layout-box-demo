@@ -1,14 +1,14 @@
 import React from 'react'
 
-const Button = (props) => (
-  <button style={{background: props.color}}>
-    {props.children}
+const Button = ({ color, children }) => (
+  <button style={{background: color}}>
+    {children}
   </button>
 )
 
-const Message = (props) => (
+const Message = ({ text, color }) => (
   <div>
-    {props.text} <Button color={props.color}>Amazing !</Button>
+    {text} <Button color={color}>Amazing !</Button>
   </div>
 )
 
