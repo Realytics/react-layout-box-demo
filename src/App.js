@@ -1,5 +1,10 @@
 import React from 'react'
 
+/**
+ * The color props is passed down :
+ * MessageList => Message => Button
+ */
+
 const Button = ({ color, children }) => (
   <button style={{background: color}}>
     {children}
