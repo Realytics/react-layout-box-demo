@@ -3,8 +3,8 @@ import { LayoutContainer, LayoutBox, InjectLayout } from './LayoutBox'
 
 const boxStyle = (lighness) => ({ background: `hsl(300, 41%, ${lighness}%)`, padding: 10, fontSize: '2em' })
 
-const StupidComponent = (props) => (
-  <span>Size : {`${props.layout.width.value} x ${props.layout.height.value}`}</span>
+const StupidComponent = ({ layout }) => (
+  <span>Size : {`${layout.width.value} x ${layout.height.value}`}</span>
 )
 const StupidComponentWithLayout = InjectLayout(StupidComponent)
 
