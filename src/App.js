@@ -23,7 +23,6 @@ class ColorStore {
 
 }
 
-
 class Button extends React.Component {
 
   constructor(props, context) {
