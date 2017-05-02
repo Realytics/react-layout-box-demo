@@ -76,7 +76,11 @@ class MessageList extends React.Component {
   render() {
     return (
       <div
-        onClick={() => { this.colorStore.setValue(this.colorStore.getValue() === "PapayaWhip" ? "Navy" : "PapayaWhip") }}
+        onClick={() => {
+          this.colorStore.setValue(
+            this.colorStore.getValue() === "PapayaWhip" ? "Navy" : "PapayaWhip"
+          )
+        }}
       >
         {React.Children.toArray(
           this.props.messages.map((message) =>
