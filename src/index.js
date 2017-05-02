@@ -17,4 +17,8 @@ injectGlobal`
     font-family: sans-serif;
     color: MediumSlateBlue;
   }
+
+  h1 {
+    text-align: center;
+  }
 `
