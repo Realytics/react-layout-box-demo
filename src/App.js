@@ -20,7 +20,7 @@ const Message = (props) => (
 class MessageList extends React.Component {
 
   getChildContext() {
-    return { color: "PapayaWhip" }
+    return { color: "red" }
   }
 
   render() {
