@@ -66,7 +66,7 @@ class MessageList extends React.Component {
 
   constructor() {
     super()
-    this.colorStore = new ColorStore('PapayaWhip')
+    this.colorStore = new ColorStore('red')
   }
 
   getChildContext() {
@@ -78,7 +78,7 @@ class MessageList extends React.Component {
       <div
         onClick={() => {
           this.colorStore.setValue(
-            this.colorStore.getValue() === "PapayaWhip" ? "Navy" : "PapayaWhip"
+            this.colorStore.getValue() === "red" ? "blue" : "red"
           )
         }}
       >
