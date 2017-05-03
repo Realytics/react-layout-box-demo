@@ -31,7 +31,7 @@ class MessageList extends React.Component {
 
   constructor() {
     super()
-    this.state = { color: "PapayaWhip" }
+    this.state = { color: "red" }
   }
 
   getChildContext() {
@@ -42,7 +42,7 @@ class MessageList extends React.Component {
     return (
       <div
         onClick={() => this.setState(state => (
-          { color: (state.color === "PapayaWhip" ? "Navy" : "PapayaWhip") }
+          { color: (state.color === "red" ? "blue" : "red") }
         ))}
       >
         {React.Children.toArray(
