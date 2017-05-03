@@ -11,9 +11,9 @@ Button.contextTypes = {
   color: PropTypes.string
 }
 
-const Message = (props) => (
+const Message = ({ text }) => (
   <div>
-    {props.text} <Button>Amazing !</Button>
+    {text} <Button>Amazing !</Button>
   </div>
 )
 
