@@ -19,7 +19,7 @@ const Message = ({ text, color }) => (
 
 class MessageList extends React.Component {
   render() {
-    const color = "PapayaWhip"
+    const color = "red"
     return (
       <div>
         {React.Children.toArray(
